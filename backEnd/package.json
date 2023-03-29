@@ -6,7 +6,7 @@
     "build": "tsc",
     "start": "node dist/app/devSarrolloIt/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "cd .. && husky install backend/.husky",
+    "prepare": "cd .. && husky install backEnd/.husky",
     "lint": "lint-staged"
   },
   "lint-staged": {
