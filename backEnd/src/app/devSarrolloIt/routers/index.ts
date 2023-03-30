@@ -1,4 +1,9 @@
-import { Router } from "express"
-const mainRouter = Router()
+import { Router } from "express";
+import { stackRouter } from "./stackRoutes";
+
+const mainRouter = Router();
 // add routes files
-export { mainRouter }
+
+mainRouter.use(stackRouter);
+
+export { mainRouter };
