@@ -8,6 +8,20 @@ class MongoRepositoryStackImpl implements StackRepository {
 
     return newStack;
   }
+
+  async findAllStack(name?: string): Promise<StackModel[]> {
+    let stack: StackModel[];
+
+    if (name) {
+      stack = await MongooseStackModel.find({
+        $or: [{ name: { $regex: name, $options: "i" } }],
+      });
+    } else {
+      stack = await MongooseStackModel.find({});
+    }
+
+    return stack;
+  }
 }
 
 export { MongoRepositoryStackImpl };
