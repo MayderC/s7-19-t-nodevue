@@ -22,4 +22,4 @@ const MongooseRoleModel = model<RoleModel>(
   MongooseRoleSchema,
 )
 
-export { MongooseRoleSchema }
+export { MongooseRoleModel }
