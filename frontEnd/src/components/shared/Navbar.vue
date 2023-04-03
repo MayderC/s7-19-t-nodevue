@@ -77,6 +77,12 @@ export default {
             class="absolute bg-gray-100 text-stone-800 inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out md:mt-0 md:p-0 md:top-0 md:relative md:bg-transparent md:w-auto md:opacity-100 md:translate-x-0 md:flex md:items-center"
           >
             <div class="flex font-montserrat flex-col md:flex-row">
+              <div v-show="isOpen" class="w-10 h-10 inline-flex items-center justify-center rounded-full ring-2 ring-stone-600 mb-4">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
               <RouterLink
                 class="flex items-center my-2 font-semibold transition-colors duration-300 transform hover:text-primary-color-100 md:mx-4 md:my-2"
                 to="/"
