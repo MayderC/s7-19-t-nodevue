@@ -14,7 +14,7 @@
       <div v-if="step === 2" class="flex flex-col items-center gap-4 mt-3">
         <h2 class="text-lg self-start font-semibold mt-2">Completa tus habilidades</h2>
         <DSInputSearch v-model="skill" @send:item="addSkill" :from="technologies"></DSInputSearch>
-        <ul class="flex flex-wrap gap-2 w-full mt-3">
+        <ul class="flex flex-wrap gap-2 w-full">
           <li
             class="bg-neutral-400 px-3 py-2 flex items-center gap-1"
             v-for="skill in skills"
@@ -29,6 +29,36 @@
             />
           </li>
         </ul>
+
+        <div class="w-full">
+          <p class="text-base font-semibold">¿Actualmente tienes algun proyecto activo?</p>
+          <div class="w-full flex gap-12 m-3">
+            <div class="flex flex-col items-start">
+              <input type="radio" id="huey" name="drone" :value="true" v-model="haveProject" />
+              <label for="huey">Si</label>
+            </div>
+
+            <div class="flex flex-col items-start">
+              <input
+                type="radio"
+                id="dewey"
+                name="drone"
+                :value="false"
+                v-model="haveProject"
+                checked
+              />
+              <label for="dewey">No</label>
+            </div>
+          </div>
+          <div v-if="haveProject">
+            <textarea
+              class="bg-neutral-200 border-neutral-600 h-28 p-3 w-full outline-none"
+              name=""
+              id=""
+              placeholder="Descripcion (opcional)"
+            ></textarea>
+          </div>
+        </div>
       </div>
     </TransitionGroup>
     <div class="w-full flex justify-between mt-14">
@@ -43,7 +73,8 @@ import { ref } from 'vue'
 import DSButton from '../common/DSButton.vue'
 import DSInput from '../common/DSInput.vue'
 import DSInputSearch from '../common/DSInputSearch.vue'
-const step = ref(2)
+
+const step = ref(1)
 const skill = ref('')
 const skills = ref([])
 const technologies = [
@@ -60,6 +91,8 @@ const technologies = [
 ]
 
 const removeSkill = (skill) => (skills.value = skills.value.filter((s) => s !== skill))
+
+const haveProject = ref(false)
 
 const addSkill = (arg) => {
   if (skills.value.includes(arg)) return

@@ -17,9 +17,9 @@
         srcset=""
       />
     </div>
-    <ul class="bg-neutral-300 rounded" id="search-results">
+    <ul class="bg-neutral-300 rounded absolute w-full z-10" id="search-results">
       <li
-        class="rounded cursor-pointer hover:bg-neutral-400 h-12 flex border-t border-gray-800 items-center px-3"
+        class="rounded cursor-pointer hover:bg-neutral-400 h-12 flex items-center px-3"
         v-for="item in matchs"
         :key="item"
         @click="sendItem(item)"
