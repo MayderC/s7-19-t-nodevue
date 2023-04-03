@@ -1,5 +1,5 @@
-import { Schema, model } from "mongoose"
-import { StackModel } from "../../../domain/estities/StackEntity"
+import { Schema, model } from "mongoose";
+import { StackModel } from "../../../domain/estities/StackEntity";
 
 const MongooseStackSchema = new Schema<StackModel>(
   {
@@ -14,12 +14,9 @@ const MongooseStackSchema = new Schema<StackModel>(
   },
   {
     timestamps: true,
-  },
-)
+  }
+);
 
-const MongooseStackModel = model<StackModel>(
-  "Stack",
-  MongooseStackSchema,
-)
+const MongooseStackModel = model<StackModel>("Stack", MongooseStackSchema);
 
-export { MongooseStackModel }
+export { MongooseStackModel };
