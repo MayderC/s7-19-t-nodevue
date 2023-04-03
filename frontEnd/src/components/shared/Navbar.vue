@@ -14,9 +14,9 @@ export default {
 </script>
 
 <template>
-  <header class="bg-center bg-cover">
+  <header class="bg-center bg-cover bg-low-rose">
     <div class="container mx-auto max-w-6xl">
-      <nav class="relative bg-transparent">
+      <nav class="relative bg-low-rose">
         <div
           class="container py-4 mx-auto md:flex md:justify-between md:items-center"
         >

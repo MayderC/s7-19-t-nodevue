@@ -31,6 +31,11 @@ const router = createRouter({
       path: '/dashboard',
       name: 'dashboard',
       component: () => import('../views/DashboardView.vue')
+    },
+    {
+      path: '/recover',
+      name: 'recover',
+      component: () => import('../views/RecoverPasswordView.vue')
     }
   ]
 })
