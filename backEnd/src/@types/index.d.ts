@@ -1,4 +1,4 @@
-import { User } from "../Contexts/Pawful/User/domain/valueObjects/User"
+import { User } from "../contexts/devSarrolloIt/User/domain/valueObjects/User"
 
 declare global {
   namespace Express {
