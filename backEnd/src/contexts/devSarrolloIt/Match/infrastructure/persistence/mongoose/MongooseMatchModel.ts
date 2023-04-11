@@ -1,5 +1,5 @@
 import { Schema, model } from "mongoose";
-import { MatchEntity } from "../domain/MatchEntity";
+import { MatchEntity } from "../../../domain/entities/MatchEntity";
 
 const MongooseMatchSchema = new Schema<MatchEntity>({
     id:{
