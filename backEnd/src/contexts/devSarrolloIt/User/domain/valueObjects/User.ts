@@ -6,8 +6,8 @@ class User implements UserModel {
     readonly name: string,
     readonly email: string,
     readonly password: string,
-    readonly roleId: string,
-    readonly stackId: string
+    readonly roleId: string[],
+    readonly stackId: string[]
   ) {}
 }
 
