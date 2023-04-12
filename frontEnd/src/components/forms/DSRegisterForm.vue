@@ -6,10 +6,10 @@
     <TransitionGroup>
       <div v-if="step === 1" class="flex flex-col items-center gap-4 mt-3">
         <h2 class="text-lg self-start font-semibold mt-2">Datos personales</h2>
-        <DSInput placeholder="Nombre" @click="roter.push('/login')"></DSInput>
-        <DSInput placeholder="Apellido" @click="roter.push('/register')"></DSInput>
-        <DSInput placeholder="Email" @click="roter.push('/login')"></DSInput>
-        <DSInput placeholder="Contraseña" @click="roter.push('/register')"></DSInput>
+        <DSInput placeholder="Nombre" v-model="name"></DSInput>
+        <DSInput placeholder="Apellido" v-model="lastName"></DSInput>
+        <DSInput placeholder="Email" v-model="email"></DSInput>
+        <DSInput placeholder="Contraseña" v-model="password"></DSInput>
       </div>
       <div v-if="step === 2" class="flex flex-col items-center gap-4 mt-3">
         <h2 class="text-lg self-start font-semibold mt-2">Completa tus habilidades</h2>
@@ -75,6 +75,12 @@ import DSInput from '../common/DSInput.vue'
 import DSInputSearch from '../common/DSInputSearch.vue'
 
 const step = ref(1)
+
+const name = ref('')
+const lastName = ref('')
+const email = ref('')
+const password = ref('')
+
 const skill = ref('')
 const skills = ref([])
 const technologies = [
