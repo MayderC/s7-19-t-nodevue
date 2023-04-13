@@ -11,7 +11,7 @@ const http = axios.create({
   }
 })
 
-ApiRequest.interceptors.request.use(
+http.interceptors.request.use(
   function (config) {
     if (config.url.includes('auth')) return config
     const token = 'test' // get from pinia or cookies

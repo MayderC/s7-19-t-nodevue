@@ -63,7 +63,7 @@
     </TransitionGroup>
     <div class="w-full flex justify-between mt-14">
       <DSButton size="w-24 h-8" @click="decreaseStep" text="Atras"></DSButton>
-      <DSButton size="w-24 h-8" @click="increaseStep" text="Continuar"></DSButton>
+      <DSButton size="w-24 h-8" @click="handleIncrease" text="Continuar"></DSButton>
     </div>
   </form>
 </template>
@@ -73,6 +73,9 @@ import { ref } from 'vue'
 import DSButton from '../common/DSButton.vue'
 import DSInput from '../common/DSInput.vue'
 import DSInputSearch from '../common/DSInputSearch.vue'
+import { onMounted } from 'vue'
+import { getStacks } from '../../services/stack'
+import { register } from '../../services/auth'
 
 const step = ref(1)
 
@@ -80,21 +83,17 @@ const name = ref('')
 const lastName = ref('')
 const email = ref('')
 const password = ref('')
+const fullName = ref(`${name.value + lastName.value}`)
 
 const skill = ref('')
 const skills = ref([])
-const technologies = [
-  'react',
-  'vue',
-  'angular',
-  'Javascript',
-  'Ts',
-  'Java',
-  'C#',
-  '.NET',
-  'Nest',
-  'Next'
-]
+const technologies = ref([])
+
+onMounted(async () => {
+  const response = await getStacks()
+  console.log(response)
+  technologies.value = response.data.map((x) => x.name)
+})
 
 const removeSkill = (skill) => (skills.value = skills.value.filter((s) => s !== skill))
 
@@ -113,6 +112,15 @@ const increaseStep = () => {
 const decreaseStep = () => {
   if (step.value <= 1) return
   step.value -= 1
+}
+
+const handdleRegister = async () => {
+  const response = await register({ name: fullName, email, password, stackId: technologies })
+}
+
+const handleIncrease = () => {
+  if (step.value >= 2) return handdleRegister()
+  increaseStep()
 }
 </script>
 
