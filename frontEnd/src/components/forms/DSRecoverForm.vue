@@ -1,9 +1,9 @@
 <template>
   <form @submit.prevent class="w-80 flex flex-col items-center p-3">
-    <h2 class="text-lg self-start font-semibold mt-2">Recuperar contraseña</h2>
+    <h2 class="text-lg self-start font-semibold mt-2 text-primary">Recuperar contraseña</h2>
     <TransitionGroup>
       <div v-if="step === 1" class="flex flex-col items-center gap-4 mt-3">
-        <p class="mt-2">Te enviaremos un link para que puedas reestablecer tu contraseña</p>
+        <p class="mt-2 text-text">Te enviaremos un link para que puedas reestablecer tu contraseña</p>
         <DSInput
           placeholder="email@mail.com"
           text="Recuperar contraseña"
