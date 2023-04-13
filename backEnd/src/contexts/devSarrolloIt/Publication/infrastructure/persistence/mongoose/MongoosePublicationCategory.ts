@@ -5,6 +5,7 @@ import { MongoosePublicationModel } from "./MongoosePublicationModel";
 
 
 class MongoosePublicationRepository implements PublicationRepository {
+
     async findAllPublication(): Promise<Publication[]> {
         const publicationAll: Publication[] | null = await MongoosePublicationModel.find({})
 
@@ -15,12 +16,18 @@ class MongoosePublicationRepository implements PublicationRepository {
         return this.getAllPublication(...publicationAll)
     }
 
-
     getAllPublication(...MongoosePublicationModel: Publication[]): Publication[] {
         return MongoosePublicationModel.map(
             (publicationdb: Publication) =>
                 new Publication(publicationdb.id, publicationdb.title, publicationdb.description, publicationdb.status, publicationdb.necessaryRoles, publicationdb.stacks, publicationdb.userId, publicationdb.matchId)
         )
+    }
+
+    async deleteOne(publication: string): Promise<void> {
+        const { deletedCount } = await MongoosePublicationModel.deleteOne({
+            id: publication,
+        })
+        if (deletedCount === 0) return null
     }
 }
 
