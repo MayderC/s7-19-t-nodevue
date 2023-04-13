@@ -20,15 +20,17 @@ class CreateUserController {
   }
 
   async run(req: Request, res: Response): Promise<void> {
-    const fields = req.body as { [key: string]: unknown }
+    const fields = req.body //as { [key: string]: unknown }
     const { name, email, password, roleId, stackId } = fields
+    
 
     if (
       typeof name !== "string" ||
       typeof email !== "string" ||
-      typeof password !== "string" ||
-      typeof roleId !== "string" ||
-      typeof stackId !== "string"
+      typeof password !== "string" 
+      // ||
+      // roleid.length == 0 ||
+      // stackid.length == 0
     ) {
       throw new MissingFieldsError()
     }
