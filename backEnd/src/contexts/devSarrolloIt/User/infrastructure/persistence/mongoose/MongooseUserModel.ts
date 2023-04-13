@@ -20,11 +20,11 @@ const MongooseUserSchema = new Schema<UserModel>(
       required: true,
     },
     roleId: {
-      type: String,
+      type: [String],
       required: true,
     },
     stackId: {
-      type: String,
+      type: [String],
       required: true,
     },
   },

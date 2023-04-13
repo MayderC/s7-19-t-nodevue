@@ -3,8 +3,8 @@ interface UserModel {
     name: string;
     email: string;
     password: string;
-    roleId: string;
-    stackId: string; 
+    roleId: string[];
+    stackId: string[]; 
 }
 
 export { type UserModel }
