@@ -1,5 +1,5 @@
 <template>
-  <button :class="['bg-low-color text-white rounded-md hover:bg-low-dark', size]">
+  <button :class="['bg-primary text-white rounded-2xl hover:bg-second my-2', size]">
     {{ text }}
   </button>
 </template>
