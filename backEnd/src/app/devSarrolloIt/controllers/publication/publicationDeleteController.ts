@@ -4,12 +4,15 @@ import { PublicationRepository } from "../../../../contexts/devSarrolloIt/Public
 import { MongoosePublicationRepository } from "../../../../contexts/devSarrolloIt/Publication/infrastructure/persistence/mongoose/MongoosePublicationCategory";
 import { MissingFieldsError } from "../../../../contexts/shared/domain/errors/MissingFieldsError";
 import { HttpCode } from "../../../shared/HttpCode";
+import { UserFindById } from "../../../../contexts/devSarrolloIt/User/application/UserFindById";
+import { UserDoesNotExistError } from "../../../../contexts/devSarrolloIt/User/domain/errors/UserDoesNotExistError";
 
 
 
 class PublicationDeleteController {
     private readonly publicationRepository: PublicationRepository
     private readonly publicationDeleteOne: PublicationDeleteOne
+    private readonly userFindById: UserFindById
 
     constructor() {
         this.publicationRepository = new MongoosePublicationRepository()
@@ -21,8 +24,14 @@ class PublicationDeleteController {
         const { id } = fields
         const { userId } = req.body
 
-        if (typeof id !== "string") {
+        if (typeof id !== "string" || typeof userId !== "string") {
             throw new MissingFieldsError()
+        }
+
+        const isExist = await this.userFindById.run(userId)
+
+        if(!isExist){
+            throw new UserDoesNotExistError()
         }
 
         const data = await this.publicationDeleteOne.run(id, userId)
