@@ -9,6 +9,7 @@ export const login = async (user) => {
 }
 
 export const register = async (user) => {
+  console.log(user)
   try {
     return await http.post('/auth/register', user)
   } catch (error) {

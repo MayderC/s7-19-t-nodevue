@@ -18,9 +18,9 @@
           <li
             class="bg-neutral-400 px-3 py-2 flex items-center gap-1"
             v-for="skill in skills"
-            :key="skill"
+            :key="skill.id"
           >
-            <p class="font-medium text-zinc-800">{{ skill }}</p>
+            <p class="font-medium text-zinc-800">{{ skill.name }}</p>
             <img
               @click="removeSkill(skill)"
               class="cursor-pointer"
@@ -76,8 +76,10 @@ import DSInputSearch from '../common/DSInputSearch.vue'
 import { onMounted } from 'vue'
 import { getStacks } from '../../services/stack'
 import { register } from '../../services/auth'
+import { useRouter } from 'vue-router'
 
 const step = ref(1)
+const router = useRouter()
 
 const name = ref('')
 const lastName = ref('')
@@ -91,8 +93,7 @@ const technologies = ref([])
 
 onMounted(async () => {
   const response = await getStacks()
-  console.log(response)
-  technologies.value = response.data.map((x) => x.name)
+  technologies.value = response.data
 })
 
 const removeSkill = (skill) => (skills.value = skills.value.filter((s) => s !== skill))
@@ -115,7 +116,15 @@ const decreaseStep = () => {
 }
 
 const handdleRegister = async () => {
-  const response = await register({ name: fullName, email, password, stackId: technologies })
+  const response = await register({
+    name: `${name.value} ${lastName.value}`,
+    email: email.value,
+    password: password.value,
+    stackId: skills.value.map((x) => x.id)
+  })
+  if (!response.error) {
+    router.push('/projects')
+  }
 }
 
 const handleIncrease = () => {
