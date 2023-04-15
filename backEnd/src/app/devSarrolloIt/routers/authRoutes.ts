@@ -16,7 +16,7 @@ authRouter.post(
   }),
 )
 authRouter.post(
-  "auth/login",
+  "/auth/login",
   asyncHandler(async (req: Request, res: Response) =>{
     const createAuthController = new CreateAuthController()
 

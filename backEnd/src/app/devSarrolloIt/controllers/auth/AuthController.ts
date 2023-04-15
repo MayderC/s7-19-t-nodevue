@@ -37,7 +37,7 @@ class CreateAuthController {
             },
         )
 
-        const data = { id: user.id, email: user.email, roles: user.roleId }
+        const data = { id: user.id, email: user.email, roles: user.roleId, stacks: user.stackId }
         res.status(HttpCode.Created).send({
             user: data,
             token: token,
