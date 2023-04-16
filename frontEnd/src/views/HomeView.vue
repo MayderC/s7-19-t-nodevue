@@ -1,10 +1,16 @@
 <template>
-  <main class="w-full min-h-screen grid place-items-center bg-low-rose">
+  <main class="w-full min-h-[80vh] grid place-items-center bg-low-rose">
     <section class="w-80 flex flex-col items-center p-3">
-      <img class="w-52" src="../assets/img/logo.svg" alt="" srcset="" />
-      <h2 class="text-low-color font-bold text-[20px] mt-4">Te damos la vienvenida</h2>
+      <img class="w-52" src="../assets/img/large-logo.svg" alt="" srcset="" />
+      <h2 class="text-low-color font-normal text-[20px] mt-4 text-center">
+        Descubre y forma parte de nuevos proyectos
+      </h2>
       <div class="flex flex-col items-center gap-4 mt-10">
-        <DSButton @click="roter.push('/login')" text="Iniciar sesion"></DSButton>
+        <DSButton
+          :size="'rounded-full py-2 px-3 w-full'"
+          @click="roter.push('/login')"
+          text="Iniciar sesion"
+        ></DSButton>
         <DSButton @click="roter.push('/register')" text="Registarse"></DSButton>
       </div>
     </section>

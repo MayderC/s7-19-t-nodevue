@@ -2,7 +2,7 @@
   <div class="w-full">
     <div class="w-full relative">
       <input
-        class="h-12 px-3 rounded-md bg-low-ligth text-low-dark border-low-dark border-[0.5px] w-full outline-none"
+        class="h-12 px-3 rounded-md bg-low-ligth text-low-dark border-[#4D4A4A] border-[2px] w-full outline-none"
         type="text"
         :value="modelValue"
         @input="updateValue"
