@@ -120,7 +120,7 @@ const increaseStep = () => {
     return notify({
       group: 'bottom',
       title: 'Error',
-      text: 'Ingresa todos los campos 😥'
+      text: 'Ingrese todos los campos 😥'
     })
   }
   step.value += 1

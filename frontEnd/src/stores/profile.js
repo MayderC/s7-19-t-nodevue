@@ -2,8 +2,7 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
 const initialProfile = {
-  token: '',
-  profile: {
+  user: {
     id: '',
     email: '',
     roles: []
@@ -12,14 +11,14 @@ const initialProfile = {
 
 export const useProfileStore = defineStore('profile', () => {
   const token = ref('')
-  const profile = ref(initialProfile)
+  const user = ref(initialProfile.user)
   const setToken = (usserToken) => {
     token.value = usserToken
   }
 
   const setProfile = (userProfile) => {
-    profile.value = userProfile
+    user.value = userProfile
   }
 
-  return { setProfile, setToken, token, profile }
+  return { setProfile, setToken, token, user }
 })

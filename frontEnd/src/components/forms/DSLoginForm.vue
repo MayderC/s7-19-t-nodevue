@@ -23,7 +23,7 @@
 import DSButton from '../common/DSButton.vue'
 import DSInput from '../common/DSInput.vue'
 import { login } from '../../services/auth'
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import { useProfileStore } from '../../stores/profile'
 import { useRouter } from 'vue-router'
 import { notify } from 'notiwind'
@@ -34,6 +34,17 @@ const store = useProfileStore()
 const router = useRouter()
 
 const handleLogin = async () => {
+  if (email.value.length <= 5 || password.value <= 4) {
+    return notify(
+      {
+        group: 'bottom',
+        title: 'Error',
+        text: 'Ingrese todos los campos 😥'
+      },
+      3000
+    )
+  }
+
   const response = await login({ email: email.value, password: password.value })
   if (response.data?.user) {
     store.setProfile(response.data.user)
