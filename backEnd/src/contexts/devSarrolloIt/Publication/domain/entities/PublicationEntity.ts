@@ -6,7 +6,6 @@ interface PublicationModel {
   necessaryRoles: [];
   stacks: [];
   userId: string;
-  matchId: string;
 }
 
 export { type PublicationModel };
