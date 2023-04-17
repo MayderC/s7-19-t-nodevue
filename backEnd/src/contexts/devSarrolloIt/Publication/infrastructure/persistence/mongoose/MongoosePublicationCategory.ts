@@ -23,9 +23,14 @@ class MongoosePublicationRepository implements PublicationRepository {
        const {id, description, necessaryRoles, stacks, status, title, userId} = savedPublication
        return new Publication(id, title, description, status, necessaryRoles, stacks, userId)
     }
+    
+    async getPublicationsByUser(id: string): Promise<Publication[]> {
+        const publications: Publication[] | null = await MongoosePublicationModel.find({userId: id})
+        if (!publications) return null
+        return this.getAllPublication(...publications)
+    }
 
-
-    getAllPublication(...MongoosePublicationModel: Publication[]): Publication[] {
+    private getAllPublication(...MongoosePublicationModel: Publication[]): Publication[] {
         return MongoosePublicationModel.map(
             (publicationdb: Publication) =>
                 new Publication(publicationdb.id, publicationdb.title, publicationdb.description, publicationdb.status, publicationdb.necessaryRoles, publicationdb.stacks, publicationdb.userId)
