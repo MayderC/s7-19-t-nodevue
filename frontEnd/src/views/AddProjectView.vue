@@ -35,13 +35,7 @@ export default {
         </div>
 
         <div class="w-full -mt-14 md:-mt-16 flex justify-start px-3 py-2">
-          <!--<div class="w-24 h-24 md:w-32 md:h-32 border-4 border-background rounded-full">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-500 dark:text-gray-400">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
-            </svg>
-            <h2 class="mt-1 font-medium tracking-wide text-gray-700 dark:text-gray-200">Imagen</h2>
-          </div>-->
-          <!--<img class="object-cover w-24 h-24 md:w-32 md:h-32 border-4 border-background rounded-full " alt="Avatar" src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=76&q=80">-->
+          
           <label for="dropzone-file" class="flex flex-col items-center bg-white justify-center w-24 h-24 md:w-32 md:h-32 shadow  cursor-pointer rounded-full">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-300">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
@@ -61,9 +55,7 @@ export default {
       
       <div class="mt-4">
         <div class="flex items-center">
-          <div class="flex items-center">
-            <h1 class="mx-2 font-semibold text-xl text-primary">Sobre el proyecto</h1>
-          </div>
+          <h1 class="mx-2 font-semibold text-xl text-primary">Sobre el proyecto</h1>
         </div>
       </div>
 
