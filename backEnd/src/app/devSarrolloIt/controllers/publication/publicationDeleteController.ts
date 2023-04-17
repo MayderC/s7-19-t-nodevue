@@ -6,24 +6,31 @@ import { MissingFieldsError } from "../../../../contexts/shared/domain/errors/Mi
 import { HttpCode } from "../../../shared/HttpCode";
 import { UserFindById } from "../../../../contexts/devSarrolloIt/User/application/UserFindById";
 import { UserDoesNotExistError } from "../../../../contexts/devSarrolloIt/User/domain/errors/UserDoesNotExistError";
+import { UserRepository } from "../../../../contexts/devSarrolloIt/User/domain/repositories/UserRepository";
+import { MongooseUserRepository } from "../../../../contexts/devSarrolloIt/User/infrastructure/persistence/mongoose/MongooseUserRepository";
+
 
 
 
 class PublicationDeleteController {
     private readonly publicationRepository: PublicationRepository
     private readonly publicationDeleteOne: PublicationDeleteOne
+    private readonly userRepository: UserRepository
     private readonly userFindById: UserFindById
-
+    
     constructor() {
         this.publicationRepository = new MongoosePublicationRepository()
         this.publicationDeleteOne = new PublicationDeleteOne(this.publicationRepository)
+        this.userRepository = new MongooseUserRepository()
+        this.userFindById = new UserFindById(this.userRepository)
     }
 
     async run(req: Request, res: Response): Promise<void | null> {
+        
         const fields = req.params as { [key: string]: unknown }
         const { id } = fields
         const { userId } = req.body
-
+        
         if (typeof id !== "string" || typeof userId !== "string") {
             throw new MissingFieldsError()
         }
@@ -34,8 +41,9 @@ class PublicationDeleteController {
             throw new UserDoesNotExistError()
         }
 
-        const data = await this.publicationDeleteOne.run(id, userId)
-        if (data === undefined) {
+        const data = await this.publicationDeleteOne.run(id)
+        
+        if (data === null) {
             res.status(HttpCode.Ok).send({ msg: "publication removed successfully" })
         } else {
             res.status(HttpCode.NotFound).send({ msg: "category not found" })

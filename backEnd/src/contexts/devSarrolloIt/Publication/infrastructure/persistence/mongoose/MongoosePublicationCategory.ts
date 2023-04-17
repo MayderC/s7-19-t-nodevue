@@ -23,10 +23,12 @@ class MongoosePublicationRepository implements PublicationRepository {
         )
     }
 
-    async deleteOne(publication: string): Promise<void> {
-        const { deletedCount } = await MongoosePublicationModel.deleteOne({
-            id: publication,
-        })
+    async deleteOne(publication: string): Promise<Publication> {
+        console.log(publication)
+        const data = await MongoosePublicationModel.deleteOne({ _id: publication })
+        console.log(data)
+        const { deletedCount } = await MongoosePublicationModel.deleteOne({ id: publication })
+        console.log(deletedCount)
         if (deletedCount === 0) return null
     }
 }

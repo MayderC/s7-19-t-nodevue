@@ -7,11 +7,11 @@ class UserFindById {
 
     async run(id: string): Promise<User> {
         const userFound = await this.userRepository.findById(id)
-
-        if (userFound) {
+        
+        if (!userFound) {
             throw new UserDoesNotExistError()
         }
-
+        
         return userFound
     }
 }
