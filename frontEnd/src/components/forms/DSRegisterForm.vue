@@ -140,6 +140,14 @@ const handdleRegister = async () => {
   })
   if (!response.error) {
     router.push('/login')
+    return notify(
+      {
+        group: 'top',
+        title: 'Success',
+        text: 'Registro exitoso 👌'
+      },
+      3000
+    )
   }
 }
 
