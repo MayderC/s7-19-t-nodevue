@@ -28,10 +28,6 @@ const MongoosePublicationSchema = new Schema<PublicationModel>({
     type: String,
     required: true,
   },
-  matchId: {
-    type: String,
-    required: true,
-  },
 });
 
 const MongoosePublicationModel = model<PublicationModel>(

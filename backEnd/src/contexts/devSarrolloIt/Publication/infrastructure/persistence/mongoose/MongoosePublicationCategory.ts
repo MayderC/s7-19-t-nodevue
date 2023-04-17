@@ -15,11 +15,20 @@ class MongoosePublicationRepository implements PublicationRepository {
         return this.getAllPublication(...publicationAll)
     }
 
+    async save(onePublication: Publication): Promise<Publication | null> {
+       const nameExist = await MongoosePublicationModel.findOne({title: onePublication.title})
+       if (nameExist) return null
+       const publication = new MongoosePublicationModel(onePublication)
+       const savedPublication: Publication = await publication.save()
+       const {id, description, necessaryRoles, stacks, status, title, userId} = savedPublication
+       return new Publication(id, title, description, status, necessaryRoles, stacks, userId)
+    }
+
 
     getAllPublication(...MongoosePublicationModel: Publication[]): Publication[] {
         return MongoosePublicationModel.map(
             (publicationdb: Publication) =>
-                new Publication(publicationdb.id, publicationdb.title, publicationdb.description, publicationdb.status, publicationdb.necessaryRoles, publicationdb.stacks, publicationdb.userId, publicationdb.matchId)
+                new Publication(publicationdb.id, publicationdb.title, publicationdb.description, publicationdb.status, publicationdb.necessaryRoles, publicationdb.stacks, publicationdb.userId)
         )
     }
 }
