@@ -1,5 +1,5 @@
 <template>
-  <main class="w-full min-h-screen grid place-items-center bg-low-rose">
+  <main class="w-full min-h-screen grid place-items-center bg-background">
     <DSRecoverForm />
   </main>
 </template>
