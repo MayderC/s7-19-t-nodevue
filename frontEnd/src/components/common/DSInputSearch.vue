@@ -2,7 +2,7 @@
   <div class="w-full">
     <div class="w-full relative">
       <input
-        class="h-12 px-3 rounded-md bg-low-ligth text-low-dark border-low-dark border-[0.5px] w-full outline-none"
+        class="h-12 px-3 rounded-md bg-low-ligth text-low-dark border-[#4D4A4A] border-[2px] w-full outline-none"
         type="text"
         :value="modelValue"
         @input="updateValue"
@@ -21,10 +21,10 @@
       <li
         class="rounded cursor-pointer hover:bg-neutral-400 h-12 flex items-center px-3"
         v-for="item in matchs"
-        :key="item"
+        :key="item.id"
         @click="sendItem(item)"
       >
-        {{ item }}
+        {{ item.name }}
       </li>
     </ul>
   </div>
@@ -44,7 +44,7 @@ const updateValue = (event) => {
   matchs.value = props.from.filter((i) =>
     event.target.value.length < 2
       ? false
-      : i.toLowerCase().includes(event.target.value.toLowerCase())
+      : i.name.toLowerCase().includes(event.target.value.toLowerCase())
   )
   emit('update:modelValue', event.target.value)
 }
