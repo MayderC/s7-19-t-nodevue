@@ -8,7 +8,7 @@ class MongoRepositoryCommentImpl implements CommentRepository {
         
         //Comprobar que la publicacion exista
         const publication = await MongoosePublicationModel.find({id: comment.publicationid})
-        console.log(publication)
+        
         if (!publication[0]) return null
     
         const newComment = await MongooseCommentModel.create(comment) ;
