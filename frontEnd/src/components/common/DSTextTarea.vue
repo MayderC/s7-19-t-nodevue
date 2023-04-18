@@ -1,6 +1,6 @@
 <template>
-  <input
-    class="h-12 px-3 bg-low-ligth text-low-dark border-low-dark border-[0.5px] w-full outline-none rounded-md"
+  <textarea
+    class="py-2 px-3 h-24 bg-low-ligth text-low-dark border-low-dark border-[0.5px] w-full outline-none rounded-md"
     :value="modelValue"
     @input="updateValue"
     :type="type"

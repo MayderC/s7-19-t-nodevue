@@ -20,7 +20,7 @@ export default {
 </script>
 <template>
   <main class="w-full grid place-items-center bg-background">
-    <div class="container px-5  mx-auto max-w-6xl">
+    <div class="container px-5 mx-auto max-w-6xl">
       <!--Encabezado de Foto-->
       <div class="flex flex-col items-center justify-center w-full mx-auto">
         <div class="w-full h-64 bg-second bg-center bg-cover rounded-2xl shadow-md">
