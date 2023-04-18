@@ -36,6 +36,21 @@ class MongoosePublicationRepository implements PublicationRepository {
                 new Publication(publicationdb.id, publicationdb.title, publicationdb.description, publicationdb.status, publicationdb.necessaryRoles, publicationdb.stacks, publicationdb.userId)
         )
     }
+
+    async updatePublication(publicationId:string, update: Publication): Promise<Publication>{
+        
+        const originalPub = await MongoosePublicationModel.where({ id : publicationId  }).findOne()
+        
+        if(originalPub.userId !== update.userId ) { return null }
+
+        const filter = { id: publicationId } ;
+        
+        const changes = {title: update.title , description: update.description , status: update.status , necessaryRoles: update.necessaryRoles , stacks: update.stacks , userId: update.userId}
+        
+        const updatedPub = await MongoosePublicationModel.findOneAndUpdate(filter, changes, {new: true}) 
+
+        return updatedPub
+    }
 }
 
 export { MongoosePublicationRepository }
