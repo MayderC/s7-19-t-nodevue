@@ -16,7 +16,7 @@ matchRouter.post(
 )
 
 matchRouter.get(
-    '/match/:userid',
+    '/matchOfUser',
     asyncHandler(async (req: Request, res: Response)=> {
         const findMatchbyuseridcontroller = new FindMatchbyUserIdController();
 

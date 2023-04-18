@@ -10,7 +10,7 @@ class MongoRepositoryMatchImpl implements MatchRepository{
     }
     
     async findmatchbyuserid(userid: string): Promise<MatchEntity[]> {
-        const matchresult = await MoongoseMatchModel.find({userid: userid})
+        const matchresult = await MoongoseMatchModel.find({userid})
 
         return matchresult
     }
