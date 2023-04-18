@@ -3,7 +3,7 @@ import { User } from "../contexts/devSarrolloIt/User/domain/valueObjects/User"
 declare global {
   namespace Express {
     export interface Request {
-      logedInUser?: Pick<User, "id" | "roles">
+      logedInUser?: Pick<User, "id">
     }
   }
 

@@ -9,6 +9,7 @@ const MongooseMatchSchema = new Schema<MatchEntity>({
     status:{
         type: Boolean,
         required: true,
+        default: false
     },
     solicitud:{
         type: Boolean,

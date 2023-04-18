@@ -30,7 +30,7 @@ class CreateAuthController {
         const user = await this.authCreator.run(log)
 
         const token = jwt.sign(
-            { id: user.id, roles: user.roleId },
+            { id: user.id},
             process.env.JWT_PASS,
             {
                 expiresIn: "1h",

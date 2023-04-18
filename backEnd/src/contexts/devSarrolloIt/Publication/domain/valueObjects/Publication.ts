@@ -9,8 +9,7 @@ class Publication implements PublicationModel {
         readonly status: boolean,
         readonly necessaryRoles: [],
         readonly stacks: [],
-        readonly userId: string,
-        readonly matchId: string,
+        readonly userId: string
     ) { }
 }
 
