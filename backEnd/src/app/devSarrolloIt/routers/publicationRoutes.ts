@@ -22,7 +22,9 @@ publicationRouter.delete(
     asyncHandler(async (req: Request, res: Response) => {
         console.log('hola')
         const deletePublicationController = new PublicationDeleteController()
-        await deletePublicationController.run(req, res)
+        await deletePublicationController.run(req, res)})
+)
+
 publicationRouter.post(
     "/publications",
     asyncHandler(async (req: Request, res: Response) => {

@@ -8,6 +8,7 @@ import { UserFindById } from "../../../../contexts/devSarrolloIt/User/applicatio
 import { UserDoesNotExistError } from "../../../../contexts/devSarrolloIt/User/domain/errors/UserDoesNotExistError";
 import { UserRepository } from "../../../../contexts/devSarrolloIt/User/domain/repositories/UserRepository";
 import { MongooseUserRepository } from "../../../../contexts/devSarrolloIt/User/infrastructure/persistence/mongoose/MongooseUserRepository";
+import { PublicationFindById } from "../../../../contexts/devSarrolloIt/Publication/application/PublicationFindById";
 
 
 
@@ -15,12 +16,14 @@ import { MongooseUserRepository } from "../../../../contexts/devSarrolloIt/User/
 class PublicationDeleteController {
     private readonly publicationRepository: PublicationRepository
     private readonly publicationDeleteOne: PublicationDeleteOne
+    private readonly publicationFindById: PublicationFindById
     private readonly userRepository: UserRepository
     private readonly userFindById: UserFindById
     
     constructor() {
         this.publicationRepository = new MongoosePublicationRepository()
         this.publicationDeleteOne = new PublicationDeleteOne(this.publicationRepository)
+        this.publicationFindById = new PublicationFindById(this.publicationRepository)
         this.userRepository = new MongooseUserRepository()
         this.userFindById = new UserFindById(this.userRepository)
     }
@@ -41,13 +44,17 @@ class PublicationDeleteController {
             throw new UserDoesNotExistError()
         }
 
-        const data = await this.publicationDeleteOne.run(id)
+        const publication = await this.publicationFindById.run(id)
+
+        console.log(publication)
+
+        // const data = await this.publicationDeleteOne.run(id)
         
-        if (data === null) {
-            res.status(HttpCode.Ok).send({ msg: "publication removed successfully" })
-        } else {
-            res.status(HttpCode.NotFound).send({ msg: "category not found" })
-        }
+        // if (data === null) {
+        //     res.status(HttpCode.Ok).send({ msg: "publication removed successfully" })
+        // } else {
+        //     res.status(HttpCode.NotFound).send({ msg: "category not found" })
+        // }
     }
 }
 
