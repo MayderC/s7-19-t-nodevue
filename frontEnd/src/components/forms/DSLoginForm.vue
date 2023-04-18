@@ -2,11 +2,7 @@
   <form @submit.prevent class="w-80 flex flex-col items-center p-3">
     <img class="w-52" src="@/assets/img/large-logo.svg" alt="" srcset="" />
     <div class="flex w-full flex-col items-center gap-4 mt-10">
-      <DSInput
-        placeholder="Ingrese w-full su email"
-        text="Iniciar sesion"
-        v-model="email"
-      ></DSInput>
+      <DSInput placeholder="Ingrese su email" text="Iniciar sesion" v-model="email"></DSInput>
       <DSInput placeholder="Ingrese la contraseña" text="Registarse" v-model="password"></DSInput>
     </div>
     <div class="mt-5">

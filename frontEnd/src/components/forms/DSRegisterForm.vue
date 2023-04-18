@@ -138,7 +138,7 @@ const handdleRegister = async () => {
     password: password.value,
     stackId: skills.value.map((x) => x.id)
   })
-  if (!response.error) {
+  if (!response?.response?.data?.error) {
     router.push('/login')
     return notify(
       {
@@ -149,6 +149,12 @@ const handdleRegister = async () => {
       3000
     )
   }
+  decreaseStep()
+  return notify({
+    group: 'bottom',
+    title: 'Error',
+    text: `${response.response.data.error} 😥`
+  })
 }
 
 const handleIncrease = () => {
