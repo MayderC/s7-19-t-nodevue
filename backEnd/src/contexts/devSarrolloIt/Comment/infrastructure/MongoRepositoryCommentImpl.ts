@@ -15,5 +15,20 @@ class MongoRepositoryCommentImpl implements CommentRepository {
         return newComment
     }
 
+    async deleteOne(commentid: string, userid:string): Promise<boolean> {
+        
+        const comment = await MongooseCommentModel.findOne({id: commentid})
+        
+        if(comment.userid !== userid) return false
+        
+        const { deletedCount } = await MongooseCommentModel.deleteOne({ id: commentid})
+
+        if( deletedCount === 1 ) return true
+
+        return false
+        
+       
+    }
+
 }
 export { MongoRepositoryCommentImpl }
