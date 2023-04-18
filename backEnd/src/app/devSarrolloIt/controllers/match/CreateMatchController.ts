@@ -19,13 +19,13 @@ class CreateMatchController {
     async run(req: Request, res: Response): Promise<void>{
         const { userid, publicationid} = req.body ;
 
-        if (typeof userid !== 'string' ||
+        if (
             typeof publicationid !== 'string'){
                 throw new MissingFieldsError
         } 
 
         const objectId = new Types.ObjectId();
-        const match = new MatchValueObject(objectId.toString(),false, false,userid,publicationid )
+        const match = new MatchValueObject(objectId.toString(),false, true,req.logedInUser?.id!,publicationid)
 
         const data = await this._matchcreateusecase.run(match) ;
 
