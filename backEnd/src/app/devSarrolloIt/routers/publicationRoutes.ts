@@ -4,6 +4,7 @@ import { PublicationFindAllController } from "../controllers/publication/publica
 import { CreatePublicationController } from "../controllers/publication/CreatePublicationController"
 import { ShowPublicationsController } from "../controllers/publication/ShowPublicationsController"
 import { UpdatePublicationController } from "../controllers/publication/UpdatePublicationController"
+import { PublicationFindByStack } from "../controllers/publication/publicationFindByStackController"
 
 const publicationRouter = Router()
 
@@ -36,6 +37,14 @@ publicationRouter.post(
     asyncHandler( async(req:Request , res: Response) => {
         const updatepublicationcontroller = new UpdatePublicationController()
         await updatepublicationcontroller.run(req,res)
+    })
+)
+
+publicationRouter.get(
+    "/publicationsByStacks",
+    asyncHandler(async (req: Request, res: Response) => {
+        const publicationController = new PublicationFindByStack()
+        await publicationController.run(req, res)
     })
 )
 

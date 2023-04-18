@@ -5,6 +5,13 @@ import { MongoosePublicationModel } from "./MongoosePublicationModel";
 
 
 class MongoosePublicationRepository implements PublicationRepository {
+
+    async getPublicationsByName(name: string): Promise<Publication[]> {
+        const publications: Publication[] | null = await MongoosePublicationModel.find({ stacks: { $in: [name] } });
+        if (publications.length == 0) return null
+        return this.getAllPublication(...publications)
+    }
+
     async findAllPublication(): Promise<Publication[]> {
         const publicationAll: Publication[] | null = await MongoosePublicationModel.find({})
 
