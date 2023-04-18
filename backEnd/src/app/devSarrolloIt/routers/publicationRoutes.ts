@@ -32,7 +32,7 @@ publicationRouter.get(
 )
 
 
-publicationRouter.put(
+publicationRouter.post(
     "/publications/:publicationid",
     asyncHandler( async(req:Request , res: Response) => {
         const updatepublicationcontroller = new UpdatePublicationController()
