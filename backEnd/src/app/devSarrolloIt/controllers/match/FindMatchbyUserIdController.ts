@@ -2,7 +2,6 @@ import { Request, Response } from "express";
 import { FindMatchbyUserIdUseCase } from "../../../../contexts/devSarrolloIt/Match/application/FindMatchbyUserIdUseCase";
 import { MatchRepository } from "../../../../contexts/devSarrolloIt/Match/domain/repository/MatchRepository";
 import { MongoRepositoryMatchImpl } from "../../../../contexts/devSarrolloIt/Match/infrastructure/persistence/mongoose/MongoRepositoryMatchImpl";
-import { MissingFieldsError } from "../../../../contexts/shared/domain/errors/MissingFieldsError";
 import { HttpCode } from "../../../shared/HttpCode";
 
 class FindMatchbyUserIdController {
@@ -15,13 +14,7 @@ class FindMatchbyUserIdController {
     }
 
     async run(req:Request, res: Response): Promise<void>{
-        const {userid} = req.params
-
-        if (typeof userid !== 'string'){
-            throw new MissingFieldsError
-        }
-
-        const data = await this._matchfindbyuseridusecase.run(userid) ;
+        const data = await this._matchfindbyuseridusecase.run(req.logedInUser?.id!) ;
         res.status(HttpCode.Ok).json(data) 
     }
 }
