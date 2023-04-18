@@ -19,7 +19,9 @@ const MongooseCommentSchema = new Schema<CommentEntity>({
         type: String,
         required: true,
     },
-});
+},{
+    timestamps: true,
+  });
 
 const MongooseCommentModel = model<CommentEntity>(
     "Comment",
