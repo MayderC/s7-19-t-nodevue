@@ -19,7 +19,7 @@ class PublicationDeleteController {
     private readonly publicationFindById: PublicationFindById
     private readonly userRepository: UserRepository
     private readonly userFindById: UserFindById
-    
+
     constructor() {
         this.publicationRepository = new MongoosePublicationRepository()
         this.publicationDeleteOne = new PublicationDeleteOne(this.publicationRepository)
@@ -29,32 +29,35 @@ class PublicationDeleteController {
     }
 
     async run(req: Request, res: Response): Promise<void | null> {
-        
+
         const fields = req.params as { [key: string]: unknown }
         const { id } = fields
         const { userId } = req.body
-        
+
         if (typeof id !== "string" || typeof userId !== "string") {
             throw new MissingFieldsError()
         }
 
         const isExist = await this.userFindById.run(userId)
 
-        if(!isExist){
+        if (!isExist) {
             throw new UserDoesNotExistError()
         }
 
         const publication = await this.publicationFindById.run(id)
 
-        console.log(publication)
+        if (publication.userId === userId) {
 
-        // const data = await this.publicationDeleteOne.run(id)
-        
-        // if (data === null) {
-        //     res.status(HttpCode.Ok).send({ msg: "publication removed successfully" })
-        // } else {
-        //     res.status(HttpCode.NotFound).send({ msg: "category not found" })
-        // }
+            const data = await this.publicationDeleteOne.run(id)
+
+            if (data === null) {
+                res.status(HttpCode.Ok).send({ msg: "publication removed successfully" })
+            } else {
+                res.status(HttpCode.NotFound).send({ msg: "publication not found" })
+            }
+        } else {
+            res.status(HttpCode.NotFound).send({ msg: "the user did not create the post" })
+        }
     }
 }
 

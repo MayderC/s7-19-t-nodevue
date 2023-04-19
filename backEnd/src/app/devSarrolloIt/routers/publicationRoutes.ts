@@ -21,7 +21,6 @@ publicationRouter.get(
 publicationRouter.delete(
     "/publications/:id",
     asyncHandler(async (req: Request, res: Response) => {
-        console.log('hola')
         const deletePublicationController = new PublicationDeleteController()
         await deletePublicationController.run(req, res)})
 )

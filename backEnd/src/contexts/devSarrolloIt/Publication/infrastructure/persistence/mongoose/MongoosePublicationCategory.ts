@@ -60,39 +60,39 @@ class MongoosePublicationRepository implements PublicationRepository {
     }
 
     async deleteOne(publication: string): Promise<Publication> {
-        const data = await MongoosePublicationModel.deleteOne({ _id: publication })        
+        const data = await MongoosePublicationModel.deleteOne({ _id: publication })
         if (data.deletedCount === 1) return null
     }
 
-    async findPublicationById(id: string): Promise<Publication>{
+    async findPublicationById(id: string): Promise<Publication> {
         const data = await MongoosePublicationModel.findById(id)
         return data
     }
 
-    async getAllCommentsByPublication(id:string): Promise<any[]>{
-        
+    async getAllCommentsByPublication(id: string): Promise<any[]> {
+
         const comments = await MongoosePublicationModel.aggregate([
             { $match: { id } },
             {
-              $lookup: {
-                from: 'comments',
-                localField: 'id',
-                foreignField: 'publicationid',
-                as: 'comments',
-              },
+                $lookup: {
+                    from: 'comments',
+                    localField: 'id',
+                    foreignField: 'publicationid',
+                    as: 'comments',
+                },
             },
             { $unwind: '$comments' },
             { $sort: { 'comments.createdAt': -1 } },
             {
-              $group: {
-                _id: '$id',
-                description: { $first: '$description' },
-                comments: { $push: '$comments' },
-              },
+                $group: {
+                    _id: '$id',
+                    description: { $first: '$description' },
+                    comments: { $push: '$comments' },
+                },
             },
-          ]);
+        ]);
 
-          return comments
+        return comments
     }
 }
 
