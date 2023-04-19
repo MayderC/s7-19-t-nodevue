@@ -45,7 +45,7 @@ const handleLogin = async () => {
   if (response.data?.user) {
     store.setProfile(response.data.user)
     store.setToken(response.data.token)
-    router.push('/profile')
+    router.push('/dashboard')
     return notify(
       {
         group: 'top',
