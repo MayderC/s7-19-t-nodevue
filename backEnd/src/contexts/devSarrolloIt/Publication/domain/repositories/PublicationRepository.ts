@@ -1,4 +1,3 @@
-import { PublicationModel } from "../entities/PublicationEntity";
 import { Publication } from "../valueObjects/Publication";
 
 
@@ -8,6 +7,8 @@ interface PublicationRepository {
     getPublicationsByUser:(id: string) => Promise<Publication[] | null>
     updatePublication:(publicationId:string, update: Publication ) => Promise<Publication>
     getPublicationsByName:(name: string) => Promise<Publication[] | null>
+    deleteOne:(id: string) => Promise<Publication | null>
+    findPublicationById:(id: string) => Promise<Publication | null> 
     getAllCommentsByPublication:(id: string) => Promise<any[]>
 }
 
