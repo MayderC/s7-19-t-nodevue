@@ -46,7 +46,10 @@ class PublicationDeleteController {
 
         const publication = await this.publicationFindById.run(id)
 
-        if(!publication){ res.status(HttpCode.NotFound).send({ msg: "publication not found" }) }
+        if(!publication){ 
+            res.status(HttpCode.NotFound).send({ msg: "publication not found" }) 
+            
+        }
 
         if (publication.userId === userId) {
 
