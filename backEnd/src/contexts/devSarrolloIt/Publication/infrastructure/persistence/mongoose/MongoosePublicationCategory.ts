@@ -60,12 +60,12 @@ class MongoosePublicationRepository implements PublicationRepository {
     }
 
     async deleteOne(publication: string): Promise<Publication> {
-        const data = await MongoosePublicationModel.deleteOne({ _id: publication })
+        const data = await MongoosePublicationModel.deleteOne({ id: publication })
         if (data.deletedCount === 1) return null
     }
 
     async findPublicationById(id: string): Promise<Publication> {
-        const data = await MongoosePublicationModel.findById(id)
+        const data = await MongoosePublicationModel.findOne({ id: id })
         return data
     }
 

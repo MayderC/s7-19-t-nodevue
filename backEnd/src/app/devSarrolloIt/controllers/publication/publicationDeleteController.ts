@@ -32,29 +32,31 @@ class PublicationDeleteController {
 
         const fields = req.params as { [key: string]: unknown }
         const { id } = fields
-        const { userId } = req.body
+        const userId = req.logedInUser?.id!
 
-        if (typeof id !== "string" || typeof userId !== "string") {
+        if (typeof id !== "string" ) {
             throw new MissingFieldsError()
         }
 
-        const isExist = await this.userFindById.run(userId)
+        // const isExist = await this.userFindById.run(userId)
 
-        if (!isExist) {
-            throw new UserDoesNotExistError()
-        }
+        // if (!isExist) {
+        //     throw new UserDoesNotExistError()
+        // }
 
         const publication = await this.publicationFindById.run(id)
+
+        if(!publication){ 
+            res.status(HttpCode.NotFound).send({ msg: "publication not found" }) 
+            
+        }
 
         if (publication.userId === userId) {
 
             const data = await this.publicationDeleteOne.run(id)
 
-            if (data === null) {
-                res.status(HttpCode.Ok).send({ msg: "publication removed successfully" })
-            } else {
-                res.status(HttpCode.NotFound).send({ msg: "publication not found" })
-            }
+            res.status(HttpCode.Ok).send({ msg: "publication removed successfully" })
+
         } else {
             res.status(HttpCode.NotFound).send({ msg: "the user did not create the post" })
         }
