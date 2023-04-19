@@ -9,6 +9,7 @@ interface PublicationRepository {
     getPublicationsByName:(name: string) => Promise<Publication[] | null>
     deleteOne:(id: string) => Promise<Publication | null>
     findPublicationById:(id: string) => Promise<Publication | null> 
+    getAllCommentsByPublication:(id: string) => Promise<any[]>
 }
 
 export {type PublicationRepository}

@@ -68,6 +68,32 @@ class MongoosePublicationRepository implements PublicationRepository {
         const data = await MongoosePublicationModel.findById(id)
         return data
     }
+
+    async getAllCommentsByPublication(id:string): Promise<any[]>{
+        
+        const comments = await MongoosePublicationModel.aggregate([
+            { $match: { id } },
+            {
+              $lookup: {
+                from: 'comments',
+                localField: 'id',
+                foreignField: 'publicationid',
+                as: 'comments',
+              },
+            },
+            { $unwind: '$comments' },
+            { $sort: { 'comments.createdAt': -1 } },
+            {
+              $group: {
+                _id: '$id',
+                description: { $first: '$description' },
+                comments: { $push: '$comments' },
+              },
+            },
+          ]);
+
+          return comments
+    }
 }
 
 export { MongoosePublicationRepository }

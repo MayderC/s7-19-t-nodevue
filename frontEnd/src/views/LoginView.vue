@@ -1,5 +1,5 @@
 <template>
-  <main class="w-full min-h-screen grid place-items-center bg-low-rose">
+  <main class="w-full min-h-[80vh] grid place-items-center bg-low-rose">
     <DSLoginForm></DSLoginForm>
   </main>
 </template>

@@ -6,6 +6,7 @@ import { CreatePublicationController } from "../controllers/publication/CreatePu
 import { ShowPublicationsController } from "../controllers/publication/ShowPublicationsController"
 import { UpdatePublicationController } from "../controllers/publication/UpdatePublicationController"
 import { PublicationFindByStack } from "../controllers/publication/publicationFindByStackController"
+import { PublicationFindAllCommentsControllers } from "../controllers/publication/publicationFindAllCommentsController"
 
 const publicationRouter = Router()
 
@@ -41,7 +42,7 @@ publicationRouter.get(
 )
 
 
-publicationRouter.post(
+publicationRouter.put(
     "/publications/:publicationid",
     asyncHandler( async(req:Request , res: Response) => {
         const updatepublicationcontroller = new UpdatePublicationController()
@@ -53,6 +54,14 @@ publicationRouter.get(
     "/publicationsByStacks",
     asyncHandler(async (req: Request, res: Response) => {
         const publicationController = new PublicationFindByStack()
+        await publicationController.run(req, res)
+    })
+)
+
+publicationRouter.get(
+    "/publications/:id",
+    asyncHandler(async (req: Request, res: Response) => {
+        const publicationController = new PublicationFindAllCommentsControllers()
         await publicationController.run(req, res)
     })
 )

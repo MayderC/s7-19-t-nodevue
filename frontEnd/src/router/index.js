@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { useProfileStore } from '../stores/profile'
+import { notify } from 'notiwind'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,7 +41,19 @@ const router = createRouter({
     {
       path: '/profile',
       name: 'profile',
-      component: () => import('../views/ProfileView.vue')
+      component: () => import('../views/ProfileView.vue'),
+      beforeEnter: (_, __, next) => {
+        const store = useProfileStore()
+        if (store.token.length == 0) {
+          notify({
+            group: 'bottom',
+            title: 'Error',
+            text: 'Necesitas Iniciar sesion'
+          })
+          next('/')
+        }
+        next()
+      }
     },
     {
       path: '/add-project',
