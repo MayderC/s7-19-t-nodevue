@@ -30,9 +30,11 @@ Es una web app que conecta a personas que buscan desarrollar su carrera profesio
 ### Backend
 
 - *Node.js*
+- *TypeScript*
 - *Express*
 - *jsonwebtoken*
 - *MongoDB*
+- *Mongoose*
 
 
 ## Team
@@ -41,7 +43,7 @@ Es una web app que conecta a personas que buscan desarrollar su carrera profesio
 |Mailen Castañer | UX / UI |  https://www.linkedin.com/in/mailen-casta%C3%B1er/|
 |Yenifer Ramírez   | Frontend      |  https://www.linkedin.com/in/yeniferrosana |
 |Mayder Cortés   | Frontend       |  https://www.linkedin.com/in/mayderc/ |
-|Manuel Nácer  |  Backend       | |
+|Manuel Nácer  |  Backend       | https://www.linkedin.com/in/mfnacer/ |
 |Matias Flores|  Backend       | |
 |Mauro Spinello |  Backend       |  https://www.linkedin.com/in/mauro-spinello-alemani/
 
