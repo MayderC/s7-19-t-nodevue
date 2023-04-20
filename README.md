@@ -45,7 +45,8 @@ Es una web app que conecta a personas que buscan desarrollar su carrera profesio
 |Mayder Cortés   | Frontend       |  https://www.linkedin.com/in/mayderc/ |
 |Manuel Nácer  |  Backend       | https://www.linkedin.com/in/mfnacer/ |
 |Matias Flores|  Backend       | |
-|Mauro Spinello |  Backend       |  https://www.linkedin.com/in/mauro-spinello-alemani/
+|Mauro Spinello |  Backend       |  https://www.linkedin.com/in/mauro-spinello-alemani |
+|Ana Juarez |  Team Leader       |  https://www.linkedin.com/in/ana-juarez01 |
 
 ### Deploy
 Frontend: https://devsarrollait.up.railway.app/
