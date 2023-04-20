@@ -30,32 +30,39 @@
             </svg>
           </button>
         </div>
-        
       </form>
       <!--Etiquetas-->
-      <div
-        class="flex flex-row my-2 gap-3 flex-wrap w-full md:w-auto md:text-left text-center"
-      >
+      <div class="flex flex-row my-2 gap-3 flex-wrap w-full md:w-auto md:text-left text-center">
         <span
-          v-for="(i) in [1,2,3]"
+          v-for="i in store.user.stacks"
           :key="i"
           class="inline-flex justify-between items-center px-3 py-2 text-sm font-semibold text-text bg-second rounded-2xl"
-        >
-          Etiqueta
+          >{{ i }}
         </span>
       </div>
       <!--Recomendado-->
       <h1 class="text-2xl text-text self-start font-semibold mt-8 mb-4">
-        Hola <span class="text-primary font-semibold">Juan</span>, aquí tenemos proyectos recomendados para tí
+        Hola <span class="text-primary font-semibold">{{ store.user.name.split(' ')[0] }}</span
+        >, aquí tenemos proyectos recomendados para tí
       </h1>
       <div class="flex flex-wrap justify-center -m-4">
-        <div class="p-4 lg:w-1/3 mx-auto" v-for="item in [1,2,3]" :key="item">
-          <DSCardProject />
+        <div class="p-4 lg:w-1/3 mx-auto" v-for="item in projects" :key="item.id">
+          <DSCardProject :data="item" />
         </div>
       </div>
     </div>
   </main>
 </template>
 <script setup>
+import { onMounted, ref } from 'vue'
 import DSCardProject from '../components/cards/DSCardProject.vue'
+import { getAllProjects } from '../services/projects'
+import { useProfileStore } from '../stores/profile'
+const projects = ref([])
+const store = useProfileStore()
+
+onMounted(async () => {
+  const res = await getAllProjects()
+  projects.value = res
+})
 </script>

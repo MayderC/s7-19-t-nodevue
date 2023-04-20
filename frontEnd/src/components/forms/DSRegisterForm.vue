@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent class="w-80 bg-white p-3">
+  <form @submit.prevent class="w-80 bg-background p-3">
     <div class="w-full h-32">
       <img class="w-40" src="@/assets/img/large-logo.svg" alt="" srcset="" />
     </div>
