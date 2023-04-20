@@ -23,6 +23,7 @@ import { ref } from 'vue'
 import { useProfileStore } from '../../stores/profile'
 import { useRouter } from 'vue-router'
 import { notify } from 'notiwind'
+import { saveProfile } from '../../helpers/localStorage'
 
 const password = ref('')
 const email = ref('')
@@ -45,6 +46,7 @@ const handleLogin = async () => {
   if (response.data?.user) {
     store.setProfile(response.data.user)
     store.setToken(response.data.token)
+    saveProfile({ token: response.data.token, user: response.data.user })
     router.push('/dashboard')
     return notify(
       {

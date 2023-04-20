@@ -1,5 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
+import { getProfile } from '../helpers/localStorage'
 
 const initialProfile = {
   user: {
@@ -10,10 +11,11 @@ const initialProfile = {
 }
 
 export const useProfileStore = defineStore('profile', () => {
-  const token = ref('')
-  const user = ref(initialProfile.user)
-  const setToken = (usserToken) => {
-    token.value = usserToken
+  const profile = getProfile()
+  const token = ref(profile ? profile.token : 'hola')
+  const user = ref(profile ? profile.user : initialProfile.user)
+  const setToken = (userToken) => {
+    token.value = userToken
   }
 
   const setProfile = (userProfile) => {

@@ -1,8 +1,16 @@
 <script setup>
-import { RouterView } from 'vue-router'
+import { RouterView, useRouter } from 'vue-router'
 import NavBarVue from '../src/components/shared/Navbar.vue'
 import { Notification, NotificationGroup, notify } from 'notiwind'
-//import FooterVue from "../src/components/shared/Footer.vue";
+import { useProfileStore } from './stores/profile'
+import { onMounted } from 'vue'
+
+const router = useRouter()
+const store = useProfileStore()
+
+onMounted(() => {
+  return store.token && store.user.id ? router.push('/dashboard') : router.push('/login')
+})
 </script>
 
 <template>
