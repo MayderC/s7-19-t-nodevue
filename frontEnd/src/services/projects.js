@@ -17,3 +17,22 @@ export const getProjectById = async (id) => {
     return {}
   }
 }
+
+export const getProjectByUser = async (id) => {
+  try {
+    const res = await http.get('/publicationsOfUser/' + id)
+    return res.data
+  } catch (error) {
+    return []
+  }
+}
+
+export const saveProject = async (project) => {
+  try {
+    console.log(project)
+    const resp = await http.post('/publications', project)
+    return resp.data
+  } catch (error) {
+    return {}
+  }
+}

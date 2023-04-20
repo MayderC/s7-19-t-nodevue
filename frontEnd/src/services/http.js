@@ -22,6 +22,12 @@ http.interceptors.request.use(
   },
   function (error) {
     // Do something with request error
+    const UNAUTHORIZED = 401
+    const router = useRouter()
+    if (error.response.status === UNAUTHORIZED) {
+      deleteProfile()
+      return router.push('/')
+    }
     return Promise.reject(error)
   }
 )

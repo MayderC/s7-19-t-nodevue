@@ -5,8 +5,15 @@ import DSProject from '../components/profile/DSProject.vue'
 import DSActivity from '../components/profile/DSActivity.vue'
 import { ref } from 'vue'
 import { useProfileStore } from '../stores/profile'
+import { getProjectByUser } from '../services/projects'
+import { onMounted } from 'vue'
 
 const store = useProfileStore()
+
+onMounted(async () => {
+  const res = await getProjectByUser(store.user.id)
+  console.log(res)
+})
 
 const view = ref('profile')
 </script>
