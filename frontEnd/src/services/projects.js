@@ -11,7 +11,7 @@ export const getAllProjects = async () => {
 
 export const getProjectById = async (id) => {
   try {
-    const response = await http.get('/publications/' + id)
+    const response = await http.get('/publicationsbyid/' + id)
     return response
   } catch (error) {
     return {}

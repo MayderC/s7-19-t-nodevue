@@ -8,10 +8,11 @@ import { getProjectById } from '../services/projects'
 
 const view = ref('profile')
 const route = useRoute()
+const project = ref({})
 
 onMounted(async () => {
   const res = await getProjectById(route.params.id)
-  console.log(res)
+  project.value = res.data
 })
 </script>
 <template>
@@ -34,7 +35,7 @@ onMounted(async () => {
       </div>
       <div class="mt-2">
         <div class="flex items-center">
-          <h1 class="mx-2 font-semibold text-2xl text-primary">Desktop App C#</h1>
+          <h1 class="mx-2 font-semibold text-2xl text-primary">{{ project.title }}</h1>
         </div>
         <!--Miembros informacion-->
         <div class="flex flex-row items-start justify-between mx-2">
@@ -78,18 +79,16 @@ onMounted(async () => {
         <div class="mt-4 w-full p-4 bg-white bg-center bg-cover rounded-2xl shadow-md">
           <p class="text-xl text-primary font-semibold">Sobre el proyecto</p>
           <p class="text-text">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique corrupti dolorum eos
-            ipsum aspernatur libero error, in nihil iusto veritatis neque atque numquam optio,
-            placeat adipisci mollitia dicta voluptatem molestias.
+            {{ project.description }}
           </p>
         </div>
         <div class="flex flex-row my-2 gap-3 flex-wrap w-full md:w-auto md:text-left text-center">
           <span
-            v-for="i in [1, 2, 3]"
-            :key="i"
+            v-for="item in project.stacks"
+            :key="item"
             class="inline-flex justify-between items-center px-3 py-2 text-sm font-semibold text-text bg-second rounded-2xl"
           >
-            Etiqueta
+            {{ item }}
           </span>
         </div>
         <div class="mt-4 w-full p-4 bg-white bg-center bg-cover rounded-2xl shadow-md">
