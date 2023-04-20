@@ -5,7 +5,6 @@ import { UnauthenticatedError } from "../../../../contexts/shared/domain/errors/
 
 const tokenValidator = (req: Request, _: Response, next: NextFunction) => {
   const token = req.headers.authorization?.split(" ")[1]
-
   if (token) {
     try {
       const payload = verify(token, process.env.JWT_PASS) as JwtPayload

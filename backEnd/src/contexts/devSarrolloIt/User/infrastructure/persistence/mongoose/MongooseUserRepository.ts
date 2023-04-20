@@ -4,13 +4,14 @@ import { User } from "../../../domain/valueObjects/User"
 import { MongooseUserModel } from "./MongooseUserModel"
 
 class MongooseUserRepository implements UserRepository {
+
   async save(user: User): Promise<User> {
     const newUser = new MongooseUserModel(user)
     const savedUser: User = await newUser.save()
 
-    const { id, name, email, password, roleId, stackId  } = savedUser
+    const { id, name, email, password, roleId, stackId } = savedUser
 
-    return new User(id, name, email, password, roleId, stackId )
+    return new User(id, name, email, password, roleId, stackId)
   }
 
   async findByEmail(email: string): Promise<User | null> {
@@ -21,6 +22,18 @@ class MongooseUserRepository implements UserRepository {
     }
 
     const { id, name, password, roleId, stackId } = user
+
+    return new User(id, name, email, password, roleId, stackId)
+  }
+
+  async findById(id: string): Promise<User | null> {
+    const user: User | null = await MongooseUserModel.findById(id)
+
+    if (!user) {
+      return null
+    }
+
+    const { name, email, password, roleId, stackId } = user
 
     return new User(id, name, email, password, roleId, stackId)
   }
