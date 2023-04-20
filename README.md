@@ -43,7 +43,7 @@ Es una web app que conecta a personas que buscan desarrollar su carrera profesio
 |Mayder Cortés   | Frontend       |  https://www.linkedin.com/in/mayderc/ |
 |Manuel Nácer  |  Backend       | |
 |Matias Flores|  Backend       | |
-|Mauro Spinello |  Backend       |  |
+|Mauro Spinello |  Backend       |  https://www.linkedin.com/in/mauro-spinello-alemani/
 
 ### Deploy
 Frontend: https://devsarrollait.up.railway.app/
