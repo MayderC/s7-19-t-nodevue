@@ -136,7 +136,7 @@ const handdleRegister = async () => {
     name: `${name.value} ${lastName.value}`,
     email: email.value,
     password: password.value,
-    stackId: skills.value.map((x) => x.id)
+    stackId: skills.value.map((x) => x.name)
   })
   if (!response?.response?.data?.error) {
     router.push('/login')
