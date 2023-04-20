@@ -1,6 +1,6 @@
 <template>
   <router-link :to="`/projects/${data.id}`">
-    <div class="w-full max-w-sm overflow-hidden bg-white rounded-2xl shadow-md p-3 cursor-pointer">
+    <div class="w-80 h-80 max-w-sm overflow-hidden bg-white rounded-2xl shadow-md p-3 cursor-pointer">
       <div class="flex items-end justify-end text-right px-6 pt-3">
         <svg class="w-5 h-5 text-yellow-500 fill-current" viewBox="0 0 24 24">
           <path
