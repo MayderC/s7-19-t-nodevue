@@ -44,7 +44,7 @@ Es una web app que conecta a personas que buscan desarrollar su carrera profesio
 |Yenifer Ramírez   | Frontend      |  https://www.linkedin.com/in/yeniferrosana |
 |Mayder Cortés   | Frontend       |  https://www.linkedin.com/in/mayderc/ |
 |Manuel Nácer  |  Backend       | https://www.linkedin.com/in/mfnacer/ |
-|Matias Flores|  Backend       | |
+|Matias Flores|  Backend       |https://www.linkedin.com/in/matfres/ |
 |Mauro Spinello |  Backend       |  https://www.linkedin.com/in/mauro-spinello-alemani |
 |Ana Juarez |  Team Leader       |  https://www.linkedin.com/in/ana-juarez01 |
 
