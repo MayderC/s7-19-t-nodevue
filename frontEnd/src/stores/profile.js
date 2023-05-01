@@ -12,7 +12,7 @@ const initialProfile = {
 
 export const useProfileStore = defineStore('profile', () => {
   const profile = getProfile()
-  const token = ref(profile ? profile.token : 'hola')
+  const token = ref(profile ? profile.token : '')
   const user = ref(profile ? profile.user : initialProfile.user)
   const setToken = (userToken) => {
     token.value = userToken

@@ -44,6 +44,7 @@ const router = createRouter({
       component: () => import('../views/ProfileView.vue'),
       beforeEnter: (_, __, next) => {
         const store = useProfileStore()
+        console.log(store)
         if (store.token.length == 0) {
           notify({
             group: 'bottom',

@@ -1,5 +1,5 @@
 <template>
-  <main class="w-full grid place-items-center bg-background">
+  <main class="w-full min-h-screen bg-background">
     <div class="container px-5 py-10 mx-auto max-w-6xl">
       <form @submit.prevent="search">
         <div class="relative w-full">
@@ -42,7 +42,7 @@
       </div>
       <!--Recomendado-->
       <h1 class="text-2xl text-text self-start font-semibold mt-8 mb-4">
-        Hola <span class="text-primary font-semibold">{{ store.user.name.split(' ')[0] }}</span
+        Hola <span class="text-primary font-semibold">{{ store.user.name?.split(' ')[0] }}</span
         >, aquí tenemos proyectos recomendados para tí
       </h1>
       <div class="flex flex-wrap justify-center -m-4">

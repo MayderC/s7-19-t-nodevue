@@ -102,7 +102,7 @@ const technologies = ref([])
 
 onMounted(async () => {
   const response = await getStacks()
-  technologies.value = response.data
+  technologies.value = response.data ? response.data : response
 })
 
 const removeSkill = (skill) => (skills.value = skills.value.filter((s) => s !== skill))
